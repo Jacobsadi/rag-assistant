@@ -1,0 +1,48 @@
+[project]
+name = "rag-assistant"
+version = "0.1.0"
+description = "End-to-end RAG assistant: ingestion, hybrid retrieval, evaluation, monitoring."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "openai==1.51.0",
+    "minsearch==0.0.3",
+    "sentence-transformers==3.1.1",
+    "pgvector==0.3.4",
+    "psycopg2-binary==2.9.9",
+    "fastapi==0.115.0",
+    "uvicorn==0.31.0",
+    "streamlit==1.39.0",
+    "python-dotenv==1.0.1",
+    "pandas==2.2.3",
+    "tqdm==4.66.5",
+    "dlt==1.1.0",
+    "requests==2.32.3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.3.3",
+    "ruff==0.6.9",
+    "jupyter==1.1.1",
+    "ipykernel==6.29.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/app"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

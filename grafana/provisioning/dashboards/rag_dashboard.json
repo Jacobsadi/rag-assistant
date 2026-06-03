@@ -1,0 +1,7 @@
+{
+  "__comment": "TODO (Module 5 lesson 12-grafana): build 5+ panels here. Either author them in the Grafana UI and export to this file, or define them as JSON. Suggested panels: 1) conversations over time, 2) avg response time, 3) total/avg cost, 4) tokens used, 5) feedback (thumbs up vs down), 6) relevance breakdown from the LLM judge.",
+  "title": "RAG Assistant",
+  "panels": [],
+  "schemaVersion": 39,
+  "version": 0
+}
