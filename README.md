@@ -35,7 +35,7 @@ See [docs/architecture.md](docs/architecture.md) for details.
 
 - Source: `<url / how obtained>`
 - Size / license: `<...>`
-- Reproduce: `make ingest` (downloads + ingests into the knowledge base)
+- Reproduce: `make download-onnx-model` then `make ingest` (ONNX `Xenova/all-MiniLM-L6-v2` → PGVector)
 
 ## Quickstart
 

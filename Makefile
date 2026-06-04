@@ -12,6 +12,12 @@ down:
 ingest:
 	uv run python -m app.ingest
 
+ingest-pgvector:
+	uv run python -m app.ingest --pgvector-only
+
+download-onnx-model:
+	uv run python -m app.embed.download
+
 eval:
 	uv run jupyter nbconvert --to notebook --execute eval/retrieval_eval.ipynb --output retrieval_eval.ipynb
 	uv run jupyter nbconvert --to notebook --execute eval/rag_eval.ipynb --output rag_eval.ipynb

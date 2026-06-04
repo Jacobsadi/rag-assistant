@@ -19,3 +19,6 @@ POSTGRES = {
 }
 
 DATA_SOURCE_URL = os.getenv("DATA_SOURCE_URL")
+
+EMBEDDING_BACKEND = os.getenv("EMBEDDING_BACKEND", "onnx")
+ONNX_MODEL_PATH = os.getenv("ONNX_MODEL_PATH", "models/Xenova/all-MiniLM-L6-v2")

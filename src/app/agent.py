@@ -48,6 +48,7 @@ def bind_retriever(retriever: KeywordRetriever) -> None:
 
 
 def search(query: str, k: int = 5) -> list[dict]:
+    """Search the FAQ database for entries matching the given query."""
     if _bound_retriever is None:
         raise RuntimeError("call bind_retriever(retriever) before search")
     return _bound_retriever.search(query, k=k)

@@ -6,9 +6,11 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
 dependencies = [
-    "openai==1.51.0",
+    "openai>=1.97.0",
     "minsearch==0.0.3",
-    "sentence-transformers==3.1.1",
+    "onnxruntime>=1.19.0",
+    "tokenizers>=0.20.0",
+    "numpy>=1.26.0",
     "pgvector==0.3.4",
     "psycopg2-binary==2.9.9",
     "fastapi==0.115.0",
@@ -22,11 +24,18 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+agent = [
+    "toyaikit>=0.0.11",
+]
+torch-embeddings = [
+    "sentence-transformers==3.1.1",
+]
 dev = [
     "pytest==8.3.3",
     "ruff==0.6.9",
     "jupyter==1.1.1",
     "ipykernel==6.29.5",
+    "huggingface-hub>=0.26.0",
 ]
 
 [build-system]
