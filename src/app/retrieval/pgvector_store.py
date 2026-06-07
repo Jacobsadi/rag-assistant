@@ -28,7 +28,7 @@ def init_schema(conn: PgConnection, *, reset: bool = True) -> None:
         cur.execute(
             f"""
             CREATE TABLE IF NOT EXISTS {DOCUMENTS_TABLE} (
-                id SERIAL PRIMARY KEY,
+                id TEXT PRIMARY KEY,
                 course TEXT,
                 section TEXT,
                 question TEXT,
@@ -47,6 +47,7 @@ def insert_documents(
 ) -> None:
     rows = [
         (
+            doc["id"],
             doc["course"],
             doc["section"],
             doc["question"],
@@ -59,8 +60,8 @@ def insert_documents(
         cur.executemany(
             f"""
             INSERT INTO {DOCUMENTS_TABLE}
-                (course, section, question, answer, embedding)
-            VALUES (%s, %s, %s, %s, %s::vector)
+                (id, course, section, question, answer, embedding)
+            VALUES (%s, %s, %s, %s, %s, %s::vector)
             """,
             rows,
         )
@@ -89,7 +90,7 @@ def search_documents(
     with conn.cursor() as cur:
         cur.execute(
             f"""
-            SELECT course, section, question, answer
+            SELECT id, course, section, question, answer
             FROM {DOCUMENTS_TABLE}
             WHERE course = %s
             ORDER BY embedding <=> %s::vector
@@ -100,10 +101,11 @@ def search_documents(
         rows = cur.fetchall()
     return [
         {
-            "course": row[0],
-            "section": row[1],
-            "question": row[2],
-            "answer": row[3],
+            "id": row[0],
+            "course": row[1],
+            "section": row[2],
+            "question": row[3],
+            "answer": row[4],
         }
         for row in rows
     ]
